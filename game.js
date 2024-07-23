@@ -240,3 +240,4 @@ function resetGame() {
     totalQuestionsAnswered = 0;
 }
 
+
