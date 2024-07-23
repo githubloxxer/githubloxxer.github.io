@@ -7,18 +7,6 @@ body {
     text-align: center;
 }
 
-#intro {
-    display: none;
-}
-
-#game {
-    display: none;
-}
-
-#game-over {
-    display: none;
-}
-
 .container {
     max-width: 800px;
     margin: 20px auto;
@@ -117,4 +105,3 @@ button:hover {
 #intro, #game, #game-over {
     text-align: center;
 }
-
