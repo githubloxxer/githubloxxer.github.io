@@ -1,8 +1,8 @@
 // Define global variables
 let currentQuestion = 0;
 let lives = 3;
-let isGeoGuessr = false;
 let totalQuestionsAnswered = 0;
+let isGeoGuessr = false;
 
 // Question pools
 const advancedLogicQuestions = [
@@ -14,7 +14,7 @@ const advancedLogicQuestions = [
     { q: "A sequence is defined as follows: a(n) = a(n-1) + a(n-2) + 1, with a(1) = 1 and a(2) = 1. What is a(5)?", a: "7" },
     { q: "What is the next number in the sequence 2, 4, 8, 16, 32, ?", a: "64" },
     { q: "In a game, you have to solve the following: (6 × 4) - 7 × 2 + (12 ÷ 3) = ?", a: "16" },
-    { q: "Find the next term in this sequence: 1, 4, 9, 16, 25, ?", a: "36" },
+    { q: "Find the next term in this sequence: 1, 1, 2, 6, 24, 120, ?", a: "720" },
     { q: "What is the answer to this riddle: 'I have keys but open no locks. I have space but no room. You can enter, but you can't go outside. What am I?'", a: "Keyboard" }
 ];
 
@@ -34,14 +34,14 @@ const advancedTriviaQuestions = [
 const complexPatternQuestions = [
     { q: "What is the next term in the sequence: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, ?", a: "31 (the next prime number)" },
     { q: "What is the next number in the Fibonacci-like sequence where each term is the sum of the two preceding terms plus 1: 1, 2, 4, 7, 12, 20, ?", a: "33" },
-    { q: "Find the next number in the pattern: 1, 4, 9, 16, 25, ?", a: "36" },
-    { q: "What is the next term in the sequence 2, 6, 12, 20, 30, ?", a: "42" },
-    { q: "Determine the next number: 1, 1, 2, 6, 24, 120, ?", a: "720 (factorial of 6)" },
-    { q: "What is the next number in the series: 2, 3, 5, 8, 12, ?", a: "17" },
-    { q: "What is the result of this calculation: (5 + 7) × (8 - 3) ÷ 2?", a: "30" },
-    { q: "Find the missing term in the sequence: 1, 1, 2, 3, 5, 8, 13, ?", a: "21 (Fibonacci sequence)" },
-    { q: "Identify the pattern and find the next number: 2, 4, 8, 16, 32, ?", a: "64" },
-    { q: "In a sequence where each term is twice the previous term plus 1, starting with 1, what is the 6th term?", a: "63" }
+    { q: "Find the next number in the pattern: 1, 1, 2, 3, 5, 8, 13, ?", a: "21 (Fibonacci sequence)" },
+    { q: "What is the result of the following expression: 3^2 + 2 × 4 - (6 ÷ 3)?", a: "13" },
+    { q: "What is the missing term in the following sequence: 1, 2, 4, 8, 16, ?", a: "32 (powers of 2)" },
+    { q: "Determine the next term in the series: 1, 4, 9, 16, 25, 36, ?", a: "49 (perfect squares)" },
+    { q: "What is the next number in this pattern: 1, 4, 9, 16, 25, ?", a: "36 (squares of integers)" },
+    { q: "Find the missing term in the sequence: 2, 6, 12, 20, 30, ?", a: "42" },
+    { q: "What is the next number in the series: 1, 1, 2, 6, 24, 120, ?", a: "720 (factorial of 6)" },
+    { q: "What is the next number in the series: 2, 3, 5, 8, 12, ?", a: "17" }
 ];
 
 const intricateWordplayQuestions = [
@@ -209,7 +209,7 @@ function showIncorrectAnswerScreen() {
     document.getElementById('game-over').style.display = 'block';
     document.getElementById('game-over').innerHTML = `<h1>Incorrect ${3 - lives}</h1>
     <p>Your answer was incorrect. You have ${lives} lives left.</p>
-    <button class="button" onclick="restartGame()">Try Again</button>`;
+    <button class="button" onclick="loadQuestion()">Try Again</button>`;
     document.getElementById('game').style.display = 'none';
 }
 
@@ -230,7 +230,7 @@ function showCrashScreen() {
     <p>The game has crashed due to an answer contradicting the code in an illegal way for the system. Error code: A04</p>
     <p>Please check the game's code or restart the game.</p>
     <div id="grade">Grade: ${getGrade()}</div>
-    <button id="restart-button" class="button" onclick="restartGame()">Restart Game</button>`;
+    <button class="button" onclick="restartGame()">Restart Game</button>`;
     document.getElementById('game').style.display = 'none';
 }
 
