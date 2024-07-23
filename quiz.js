@@ -1,198 +1,57 @@
-const quiz = {
-    questions: [
-        { question: "Can something be in two places at once?", answers: ["Yes", "No", "Only in quantum physics", "Not sure"], correct: 2 },
-        { question: "Can an omnipotent being create a rock so heavy that even they cannot lift it?", answers: ["Yes", "No", "Depends on the definition of omnipotent", "Not sure"], correct: 2 },
-        { question: "Is it possible to travel faster than the speed of light?", answers: ["Yes", "No", "Only in theory", "Not sure"], correct: 1 },
-        { question: "Can a person be both alive and dead simultaneously?", answers: ["Yes", "No", "Only in quantum states", "Not sure"], correct: 2 },
-        { question: "If you travel back in time and kill your grandfather, would you cease to exist?", answers: ["Yes", "No", "Only in specific theories", "Not sure"], correct: 2 },
-        { question: "Can a set of all sets contain itself?", answers: ["Yes", "No", "Only in certain models", "Not sure"], correct: 2 },
-        { question: "If every event is predetermined, can free will exist?", answers: ["Yes", "No", "Only in certain models", "Not sure"], correct: 2 },
-        { question: "Can you ever truly know anything with absolute certainty?", answers: ["Yes", "No", "Only in certain contexts", "Not sure"], correct: 2 },
-        { question: "If you could observe every possible outcome, would you still be able to change the future?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "Can something be both existent and non-existent in different contexts simultaneously?", answers: ["Yes", "No", "Only in specific frameworks", "Not sure"], correct: 2 },
-        { question: "If you know the exact outcome of every event, does that mean the future is predetermined?", answers: ["Yes", "No", "Only in specific theories", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by altering fundamental principles of logic?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "If every possible event occurs, does it mean every outcome is real?", answers: ["Yes", "No", "Only in specific contexts", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by changing its context or interpretation?", answers: ["Yes", "No", "Only in specific systems", "Not sure"], correct: 2 },
-        { question: "If every possibility exists, does it make every outcome inevitable?", answers: ["Yes", "No", "Only in specific theories", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by changing the definition of its terms?", answers: ["Yes", "No", "Only in specific contexts", "Not sure"], correct: 2 },
-        { question: "If you could change every factor, does that imply the future is mutable?", answers: ["Yes", "No", "Only in specific theories", "Not sure"], correct: 2 },
-        { question: "Can something be both true and false in different logical systems?", answers: ["Yes", "No", "Only in specific frameworks", "Not sure"], correct: 2 },
-        { question: "If the universe is infinite, does it mean it contains every possible outcome?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "Can a paradox be considered resolved if it creates more questions?", answers: ["Yes", "No", "Only if universally accepted", "Not sure"], correct: 1 },
-        { question: "If a future event is known, does it mean it was always going to happen?", answers: ["Yes", "No", "Only if determinism is true", "Not sure"], correct: 2 },
-        { question: "Can a statement be both accurate and inaccurate simultaneously in different contexts?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "If every possible event occurs, does it make every outcome inevitable?", answers: ["Yes", "No", "Only in specific contexts", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by changing the rules of logic?", answers: ["Yes", "No", "Only in specific systems", "Not sure"], correct: 2 },
-        { question: "If you could observe every possible outcome, would you still be able to change the future?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "Can something be both existent and non-existent in different contexts simultaneously?", answers: ["Yes", "No", "Only in specific frameworks", "Not sure"], correct: 2 },
-        { question: "If you know the exact outcome of every event, does that mean the future is predetermined?", answers: ["Yes", "No", "Only in specific theories", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by altering fundamental principles of logic?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "If every possible event occurs, does it mean every outcome is real?", answers: ["Yes", "No", "Only in specific contexts", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by changing its context or interpretation?", answers: ["Yes", "No", "Only in specific systems", "Not sure"], correct: 2 },
-        { question: "If every possibility exists, does it make every outcome inevitable?", answers: ["Yes", "No", "Only in specific theories", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by changing the definition of its terms?", answers: ["Yes", "No", "Only in specific contexts", "Not sure"], correct: 2 },
-        { question: "If you could change every factor, does that imply the future is mutable?", answers: ["Yes", "No", "Only in specific theories", "Not sure"], correct: 2 },
-        { question: "Can something be both true and false in different logical systems?", answers: ["Yes", "No", "Only in specific frameworks", "Not sure"], correct: 2 },
-        { question: "If the universe is infinite, does it mean it contains every possible outcome?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "Can a paradox be considered resolved if it creates more questions?", answers: ["Yes", "No", "Only if universally accepted", "Not sure"], correct: 1 },
-        { question: "If a future event is known, does it mean it was always going to happen?", answers: ["Yes", "No", "Only if determinism is true", "Not sure"], correct: 2 },
-        { question: "Can a statement be both accurate and inaccurate simultaneously in different contexts?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "If every possible event occurs, does it make every outcome inevitable?", answers: ["Yes", "No", "Only in specific contexts", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by changing the rules of logic?", answers: ["Yes", "No", "Only in specific systems", "Not sure"], correct: 2 },
-        { question: "If you could observe every possible outcome, would you still be able to change the future?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "Can something be both existent and non-existent in different contexts simultaneously?", answers: ["Yes", "No", "Only in specific frameworks", "Not sure"], correct: 2 },
-        { question: "If you know the exact outcome of every event, does that mean the future is predetermined?", answers: ["Yes", "No", "Only in specific theories", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by altering fundamental principles of logic?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "If every possible event occurs, does it mean every outcome is real?", answers: ["Yes", "No", "Only in specific contexts", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by changing its context or interpretation?", answers: ["Yes", "No", "Only in specific systems", "Not sure"], correct: 2 },
-        { question: "If every possibility exists, does it make every outcome inevitable?", answers: ["Yes", "No", "Only in specific theories", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by changing the definition of its terms?", answers: ["Yes", "No", "Only in specific contexts", "Not sure"], correct: 2 },
-        { question: "If you could change every factor, does that imply the future is mutable?", answers: ["Yes", "No", "Only in specific theories", "Not sure"], correct: 2 },
-        { question: "Can something be both true and false in different logical systems?", answers: ["Yes", "No", "Only in specific frameworks", "Not sure"], correct: 2 },
-        { question: "If the universe is infinite, does it mean it contains every possible outcome?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "Can a paradox be considered resolved if it creates more questions?", answers: ["Yes", "No", "Only if universally accepted", "Not sure"], correct: 1 },
-        { question: "If a future event is known, does it mean it was always going to happen?", answers: ["Yes", "No", "Only if determinism is true", "Not sure"], correct: 2 },
-        { question: "Can a statement be both accurate and inaccurate simultaneously in different contexts?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "If every possible event occurs, does it make every outcome inevitable?", answers: ["Yes", "No", "Only in specific contexts", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by changing the rules of logic?", answers: ["Yes", "No", "Only in specific systems", "Not sure"], correct: 2 },
-        { question: "If you could observe every possible outcome, would you still be able to change the future?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "Can something be both existent and non-existent in different contexts simultaneously?", answers: ["Yes", "No", "Only in specific frameworks", "Not sure"], correct: 2 },
-        { question: "If you know the exact outcome of every event, does that mean the future is predetermined?", answers: ["Yes", "No", "Only in specific theories", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by altering fundamental principles of logic?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "If every possible event occurs, does it mean every outcome is real?", answers: ["Yes", "No", "Only in specific contexts", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by changing its context or interpretation?", answers: ["Yes", "No", "Only in specific systems", "Not sure"], correct: 2 },
-        { question: "If every possibility exists, does it make every outcome inevitable?", answers: ["Yes", "No", "Only in specific theories", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by changing the definition of its terms?", answers: ["Yes", "No", "Only in specific contexts", "Not sure"], correct: 2 },
-        { question: "If you could change every factor, does that imply the future is mutable?", answers: ["Yes", "No", "Only in specific theories", "Not sure"], correct: 2 },
-        { question: "Can something be both true and false in different logical systems?", answers: ["Yes", "No", "Only in specific frameworks", "Not sure"], correct: 2 },
-        { question: "If the universe is infinite, does it mean it contains every possible outcome?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "Can a paradox be considered resolved if it creates more questions?", answers: ["Yes", "No", "Only if universally accepted", "Not sure"], correct: 1 },
-        { question: "If a future event is known, does it mean it was always going to happen?", answers: ["Yes", "No", "Only if determinism is true", "Not sure"], correct: 2 },
-        { question: "Can a statement be both accurate and inaccurate simultaneously in different contexts?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "If every possible event occurs, does it make every outcome inevitable?", answers: ["Yes", "No", "Only in specific contexts", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by changing the rules of logic?", answers: ["Yes", "No", "Only in specific systems", "Not sure"], correct: 2 },
-        { question: "If you could observe every possible outcome, would you still be able to change the future?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "Can something be both existent and non-existent in different contexts simultaneously?", answers: ["Yes", "No", "Only in specific frameworks", "Not sure"], correct: 2 },
-        { question: "If you know the exact outcome of every event, does that mean the future is predetermined?", answers: ["Yes", "No", "Only in specific theories", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by altering fundamental principles of logic?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "If every possible event occurs, does it mean every outcome is real?", answers: ["Yes", "No", "Only in specific contexts", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by changing its context or interpretation?", answers: ["Yes", "No", "Only in specific systems", "Not sure"], correct: 2 },
-        { question: "If every possibility exists, does it make every outcome inevitable?", answers: ["Yes", "No", "Only in specific theories", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by changing the definition of its terms?", answers: ["Yes", "No", "Only in specific contexts", "Not sure"], correct: 2 },
-        { question: "If you could change every factor, does that imply the future is mutable?", answers: ["Yes", "No", "Only in specific theories", "Not sure"], correct: 2 },
-        { question: "Can something be both true and false in different logical systems?", answers: ["Yes", "No", "Only in specific frameworks", "Not sure"], correct: 2 },
-        { question: "If the universe is infinite, does it mean it contains every possible outcome?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "Can a paradox be considered resolved if it creates more questions?", answers: ["Yes", "No", "Only if universally accepted", "Not sure"], correct: 1 },
-        { question: "If a future event is known, does it mean it was always going to happen?", answers: ["Yes", "No", "Only if determinism is true", "Not sure"], correct: 2 },
-        { question: "Can a statement be both accurate and inaccurate simultaneously in different contexts?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "If every possible event occurs, does it make every outcome inevitable?", answers: ["Yes", "No", "Only in specific contexts", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by changing the rules of logic?", answers: ["Yes", "No", "Only in specific systems", "Not sure"], correct: 2 },
-        { question: "If you could observe every possible outcome, would you still be able to change the future?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "Can something be both existent and non-existent in different contexts simultaneously?", answers: ["Yes", "No", "Only in specific frameworks", "Not sure"], correct: 2 },
-        { question: "If you know the exact outcome of every event, does that mean the future is predetermined?", answers: ["Yes", "No", "Only in specific theories", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by altering fundamental principles of logic?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "If every possible event occurs, does it mean every outcome is real?", answers: ["Yes", "No", "Only in specific contexts", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by changing its context or interpretation?", answers: ["Yes", "No", "Only in specific systems", "Not sure"], correct: 2 },
-        { question: "If every possibility exists, does it make every outcome inevitable?", answers: ["Yes", "No", "Only in specific theories", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by changing the definition of its terms?", answers: ["Yes", "No", "Only in specific contexts", "Not sure"], correct: 2 },
-        { question: "If you could change every factor, does that imply the future is mutable?", answers: ["Yes", "No", "Only in specific theories", "Not sure"], correct: 2 },
-        { question: "Can something be both true and false in different logical systems?", answers: ["Yes", "No", "Only in specific frameworks", "Not sure"], correct: 2 },
-        { question: "If the universe is infinite, does it mean it contains every possible outcome?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "Can a paradox be considered resolved if it creates more questions?", answers: ["Yes", "No", "Only if universally accepted", "Not sure"], correct: 1 },
-        { question: "If a future event is known, does it mean it was always going to happen?", answers: ["Yes", "No", "Only if determinism is true", "Not sure"], correct: 2 },
-        { question: "Can a statement be both accurate and inaccurate simultaneously in different contexts?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "If every possible event occurs, does it make every outcome inevitable?", answers: ["Yes", "No", "Only in specific contexts", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by changing the rules of logic?", answers: ["Yes", "No", "Only in specific systems", "Not sure"], correct: 2 },
-        { question: "If you could observe every possible outcome, would you still be able to change the future?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "Can something be both existent and non-existent in different contexts simultaneously?", answers: ["Yes", "No", "Only in specific frameworks", "Not sure"], correct: 2 },
-        { question: "If you know the exact outcome of every event, does that mean the future is predetermined?", answers: ["Yes", "No", "Only in specific theories", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by altering fundamental principles of logic?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "If every possible event occurs, does it mean every outcome is real?", answers: ["Yes", "No", "Only in specific contexts", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by changing its context or interpretation?", answers: ["Yes", "No", "Only in specific systems", "Not sure"], correct: 2 },
-        { question: "If every possibility exists, does it make every outcome inevitable?", answers: ["Yes", "No", "Only in specific theories", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by changing the definition of its terms?", answers: ["Yes", "No", "Only in specific contexts", "Not sure"], correct: 2 },
-        { question: "If you could change every factor, does that imply the future is mutable?", answers: ["Yes", "No", "Only in specific theories", "Not sure"], correct: 2 },
-        { question: "Can something be both true and false in different logical systems?", answers: ["Yes", "No", "Only in specific frameworks", "Not sure"], correct: 2 },
-        { question: "If the universe is infinite, does it mean it contains every possible outcome?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "Can a paradox be considered resolved if it creates more questions?", answers: ["Yes", "No", "Only if universally accepted", "Not sure"], correct: 1 },
-        { question: "If a future event is known, does it mean it was always going to happen?", answers: ["Yes", "No", "Only if determinism is true", "Not sure"], correct: 2 },
-        { question: "Can a statement be both accurate and inaccurate simultaneously in different contexts?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "If every possible event occurs, does it make every outcome inevitable?", answers: ["Yes", "No", "Only in specific contexts", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by changing the rules of logic?", answers: ["Yes", "No", "Only in specific systems", "Not sure"], correct: 2 },
-        { question: "If you could observe every possible outcome, would you still be able to change the future?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "Can something be both existent and non-existent in different contexts simultaneously?", answers: ["Yes", "No", "Only in specific frameworks", "Not sure"], correct: 2 },
-        { question: "If you know the exact outcome of every event, does that mean the future is predetermined?", answers: ["Yes", "No", "Only in specific theories", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by altering fundamental principles of logic?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "If every possible event occurs, does it mean every outcome is real?", answers: ["Yes", "No", "Only in specific contexts", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by changing its context or interpretation?", answers: ["Yes", "No", "Only in specific systems", "Not sure"], correct: 2 },
-        { question: "If every possibility exists, does it make every outcome inevitable?", answers: ["Yes", "No", "Only in specific theories", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by changing the definition of its terms?", answers: ["Yes", "No", "Only in specific contexts", "Not sure"], correct: 2 },
-        { question: "If you could change every factor, does that imply the future is mutable?", answers: ["Yes", "No", "Only in specific theories", "Not sure"], correct: 2 },
-        { question: "Can something be both true and false in different logical systems?", answers: ["Yes", "No", "Only in specific frameworks", "Not sure"], correct: 2 },
-        { question: "If the universe is infinite, does it mean it contains every possible outcome?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "Can a paradox be considered resolved if it creates more questions?", answers: ["Yes", "No", "Only if universally accepted", "Not sure"], correct: 1 },
-        { question: "If a future event is known, does it mean it was always going to happen?", answers: ["Yes", "No", "Only if determinism is true", "Not sure"], correct: 2 },
-        { question: "Can a statement be both accurate and inaccurate simultaneously in different contexts?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "If every possible event occurs, does it make every outcome inevitable?", answers: ["Yes", "No", "Only in specific contexts", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by changing the rules of logic?", answers: ["Yes", "No", "Only in specific systems", "Not sure"], correct: 2 },
-        { question: "If you could observe every possible outcome, would you still be able to change the future?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "Can something be both existent and non-existent in different contexts simultaneously?", answers: ["Yes", "No", "Only in specific frameworks", "Not sure"], correct: 2 },
-        { question: "If you know the exact outcome of every event, does that mean the future is predetermined?", answers: ["Yes", "No", "Only in specific theories", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by altering fundamental principles of logic?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "If every possible event occurs, does it mean every outcome is real?", answers: ["Yes", "No", "Only in specific contexts", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by changing its context or interpretation?", answers: ["Yes", "No", "Only in specific systems", "Not sure"], correct: 2 },
-        { question: "If every possibility exists, does it make every outcome inevitable?", answers: ["Yes", "No", "Only in specific theories", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by changing the definition of its terms?", answers: ["Yes", "No", "Only in specific contexts", "Not sure"], correct: 2 },
-        { question: "If you could change every factor, does that imply the future is mutable?", answers: ["Yes", "No", "Only in specific theories", "Not sure"], correct: 2 },
-        { question: "Can something be both true and false in different logical systems?", answers: ["Yes", "No", "Only in specific frameworks", "Not sure"], correct: 2 },
-        { question: "If the universe is infinite, does it mean it contains every possible outcome?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "Can a paradox be considered resolved if it creates more questions?", answers: ["Yes", "No", "Only if universally accepted", "Not sure"], correct: 1 },
-        { question: "If a future event is known, does it mean it was always going to happen?", answers: ["Yes", "No", "Only if determinism is true", "Not sure"], correct: 2 },
-        { question: "Can a statement be both accurate and inaccurate simultaneously in different contexts?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "If every possible event occurs, does it make every outcome inevitable?", answers: ["Yes", "No", "Only in specific contexts", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by changing the rules of logic?", answers: ["Yes", "No", "Only in specific systems", "Not sure"], correct: 2 },
-        { question: "If you could observe every possible outcome, would you still be able to change the future?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "Can something be both existent and non-existent in different contexts simultaneously?", answers: ["Yes", "No", "Only in specific frameworks", "Not sure"], correct: 2 },
-        { question: "If you know the exact outcome of every event, does that mean the future is predetermined?", answers: ["Yes", "No", "Only in specific theories", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by altering fundamental principles of logic?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "If every possible event occurs, does it mean every outcome is real?", answers: ["Yes", "No", "Only in specific contexts", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by changing its context or interpretation?", answers: ["Yes", "No", "Only in specific systems", "Not sure"], correct: 2 },
-        { question: "If every possibility exists, does it make every outcome inevitable?", answers: ["Yes", "No", "Only in specific theories", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by changing the definition of its terms?", answers: ["Yes", "No", "Only in specific contexts", "Not sure"], correct: 2 },
-        { question: "If you could change every factor, does that imply the future is mutable?", answers: ["Yes", "No", "Only in specific theories", "Not sure"], correct: 2 },
-        { question: "Can something be both true and false in different logical systems?", answers: ["Yes", "No", "Only in specific frameworks", "Not sure"], correct: 2 },
-        { question: "If the universe is infinite, does it mean it contains every possible outcome?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "Can a paradox be considered resolved if it creates more questions?", answers: ["Yes", "No", "Only if universally accepted", "Not sure"], correct: 1 },
-        { question: "If a future event is known, does it mean it was always going to happen?", answers: ["Yes", "No", "Only if determinism is true", "Not sure"], correct: 2 },
-        { question: "Can a statement be both accurate and inaccurate simultaneously in different contexts?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "If every possible event occurs, does it make every outcome inevitable?", answers: ["Yes", "No", "Only in specific contexts", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by changing the rules of logic?", answers: ["Yes", "No", "Only in specific systems", "Not sure"], correct: 2 },
-        { question: "If you could observe every possible outcome, would you still be able to change the future?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "Can something be both existent and non-existent in different contexts simultaneously?", answers: ["Yes", "No", "Only in specific frameworks", "Not sure"], correct: 2 },
-        { question: "If you know the exact outcome of every event, does that mean the future is predetermined?", answers: ["Yes", "No", "Only in specific theories", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by altering fundamental principles of logic?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "If every possible event occurs, does it mean every outcome is real?", answers: ["Yes", "No", "Only in specific contexts", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by changing its context or interpretation?", answers: ["Yes", "No", "Only in specific systems", "Not sure"], correct: 2 },
-        { question: "If every possibility exists, does it make every outcome inevitable?", answers: ["Yes", "No", "Only in specific theories", "Not sure"], correct: 2 },
-        { question: "Can a paradox be resolved by changing the definition of its terms?", answers: ["Yes", "No", "Only in specific contexts", "Not sure"], correct: 2 },
-        { question: "If you could change every factor, does that imply the future is mutable?", answers: ["Yes", "No", "Only in specific theories", "Not sure"], correct: 2 },
-        { question: "Can something be both true and false in different logical systems?", answers: ["Yes", "No", "Only in specific frameworks", "Not sure"], correct: 2 },
-        { question: "If the universe is infinite, does it mean it contains every possible outcome?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 },
-        { question: "Can a paradox be considered resolved if it creates more questions?", answers: ["Yes", "No", "Only if universally accepted", "Not sure"], correct: 1 },
-        { question: "If a future event is known, does it mean it was always going to happen?", answers: ["Yes", "No", "Only if determinism is true", "Not sure"], correct: 2 },
-        { question: "Can a statement be both accurate and inaccurate simultaneously in different contexts?", answers: ["Yes", "No", "Only in specific models", "Not sure"], correct: 2 }
+document.addEventListener('DOMContentLoaded', () => {
+    const questions = [
+        // Example questions (replace with your full list of 218 questions)
+        { question: "Can a paradox be resolved?", answers: ["Yes", "No", "Only in specific cases", "Not sure"], correct: 0 },
+        { question: "If a statement is both true and false, can it be true?", answers: ["Yes", "No", "Only in specific systems", "Not sure"], correct: 2 },
+        // Add more questions here...
     ];
 
-    // Shuffle questions to ensure a randomized order
-    function shuffleArray(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
+    let currentQuestionIndex = 0;
+    let lives = 3;
+
+    function displayQuestion(index) {
+        if (index >= questions.length) {
+            // End of questions
+            return;
+        }
+        const q = questions[index];
+        document.getElementById('question').innerText = q.question;
+        document.getElementById('answer1').innerText = q.answers[0];
+        document.getElementById('answer2').innerText = q.answers[1];
+        document.getElementById('answer3').innerText = q.answers[2];
+        document.getElementById('answer4').innerText = q.answers[3];
+
+        // Add click event listeners for answers
+        document.getElementById('answer1').onclick = () => handleAnswer(0);
+        document.getElementById('answer2').onclick = () => handleAnswer(1);
+        document.getElementById('answer3').onclick = () => handleAnswer(2);
+        document.getElementById('answer4').onclick = () => handleAnswer(3);
+    }
+
+    function handleAnswer(selectedIndex) {
+        const correctIndex = questions[currentQuestionIndex].correct;
+        if (selectedIndex === correctIndex) {
+            currentQuestionIndex++;
+            if (currentQuestionIndex === questions.length) {
+                alert("Congratulations! You've completed all questions.");
+                return;
+            }
+            displayQuestion(currentQuestionIndex);
+        } else {
+            lives--;
+            document.getElementById('life-count').innerText = lives;
+            if (lives <= 0) {
+                // Show game over screen
+                document.getElementById('game').classList.add('hidden');
+                document.getElementById('game-over').classList.remove('hidden');
+                return;
+            }
+            currentQuestionIndex++;
+            displayQuestion(currentQuestionIndex);
         }
     }
 
-    shuffleArray(questions);
-    
-    // Code to display the questions and handle user input will go here
+    // Start the game
+    displayQuestion(currentQuestionIndex);
 });
+
