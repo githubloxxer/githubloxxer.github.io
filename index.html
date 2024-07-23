@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Paradox Quiz</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .question-container { margin: 20px; }
+        .question { font-size: 1.5em; }
+        .answers { margin-top: 10px; }
+        .answer-button { display: block; margin: 5px 0; padding: 10px; font-size: 1.2em; }
+        .crash-screen { display: none; text-align: center; margin-top: 50px; }
+        .crash-screen.show { display: block; }
+        .lives { margin-top: 20px; font-size: 1.2em; }
+    </style>
+</head>
+<body>
+    <div id="quiz-container">
+        <div id="lives" class="lives"></div>
+        <div class="question-container">
+            <div id="question" class="question"></div>
+            <div id="answers" class="answers"></div>
+        </div>
+        <div id="crash-screen" class="crash-screen">
+            <div style="font-size: 2em; color: red;">Crashed</div>
+            <div style="font-size: 1.5em;">:(</div>
+            <div style="margin-top: 20px;">The game's mechanics have failed. err_Digital_Code: 218, err_Code: 218_answer_wrong</div>
+            <div>Please check the game's code or restart the game.</div>
+        </div>
+    </div>
+    <script src="quiz.js"></script>
+</body>
+</html>
