@@ -2,6 +2,7 @@
 let currentQuestion = 0;
 let lives = 3;
 let isGeoGuessr = false;
+let totalQuestionsAnswered = 0;
 
 // Question pools
 const advancedLogicQuestions = [
@@ -72,6 +73,7 @@ const geoGuessrQuestions = [
 function startGame() {
     document.getElementById('intro').style.display = 'none';
     document.getElementById('game').style.display = 'block';
+    resetGame();
     loadQuestion();
 }
 
@@ -125,8 +127,8 @@ function shuffle(array) {
 }
 
 function loadQuestion() {
-    if (currentQuestion >= 10 || lives <= 0) {
-        showGameOver();
+    if (currentQuestion >= 10) {
+        showCrashScreen();
         return;
     }
 
@@ -156,7 +158,7 @@ function loadQuestion() {
 
         const answersContainer = document.getElementById('answers-container');
         answersContainer.innerHTML = '';
-        const answers = shuffle([questionData.a, 'Incorrect1', 'Incorrect2', 'Incorrect3']);
+        const answers = shuffle([questionData.a, generateFakeAnswer(), generateFakeAnswer(), generateFakeAnswer()]);
         answers.forEach(answer => {
             const button = document.createElement('button');
             button.className = 'button';
@@ -167,9 +169,14 @@ function loadQuestion() {
     }
 }
 
+function generateFakeAnswer() {
+    return `FakeAnswer${Math.floor(Math.random() * 1000)}`;
+}
+
 function checkAnswer(selectedAnswer, correctAnswer) {
     if (selectedAnswer === correctAnswer) {
         currentQuestion++;
+        totalQuestionsAnswered++;
         loadQuestion();
     } else {
         lives--;
@@ -177,8 +184,7 @@ function checkAnswer(selectedAnswer, correctAnswer) {
         if (lives <= 0) {
             showGameOver();
         } else {
-            currentQuestion++;
-            loadQuestion();
+            showIncorrectAnswerScreen();
         }
     }
 }
@@ -186,6 +192,7 @@ function checkAnswer(selectedAnswer, correctAnswer) {
 function checkGeoGuessrAnswer(selectedAnswer, correctAnswer) {
     if (selectedAnswer === correctAnswer) {
         currentQuestion++;
+        totalQuestionsAnswered++;
         loadQuestion();
     } else {
         lives--;
@@ -193,13 +200,18 @@ function checkGeoGuessrAnswer(selectedAnswer, correctAnswer) {
         if (lives <= 0) {
             showGameOver();
         } else {
-            currentQuestion++;
-            loadQuestion();
+            showIncorrectAnswerScreen();
         }
     }
 }
 
-function showGameOver() {
+function showIncorrectAnswerScreen() {
+    document.getElementById('game').style.display = 'none';
+    document.getElementById('game-over').style.display = 'block';
+    document.getElementById('grade').innerText = `Game Over. You answered ${totalQuestionsAnswered} questions correctly.`;
+}
+
+function showCrashScreen() {
     document.getElementById('game').style.display = 'none';
     document.getElementById('game-over').style.display = 'block';
     document.getElementById('grade').innerText = `Your grade: ${calculateGrade()}`;
@@ -216,9 +228,15 @@ function calculateGrade() {
 function restartGame() {
     lives = 3;
     currentQuestion = 0;
+    totalQuestionsAnswered = 0;
     document.getElementById('game-over').style.display = 'none';
     document.getElementById('intro').style.display = 'block';
 }
 
 // Initialize game
-document.getElementById('intro').style.display = 'block';
+function resetGame() {
+    lives = 3;
+    currentQuestion = 0;
+    totalQuestionsAnswered = 0;
+}
+
